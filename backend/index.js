@@ -1,42 +1,46 @@
+import 'dotenv/config';
 import express from 'express';
-
-import mongoose  from 'mongoose';
+import cors from 'cors';
+import mongoose from 'mongoose';
 
 const app = express();
+
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://SEU_USUARIO.github.io'],
+}));
 app.use(express.json());
 
-
-
-
-mongoose.connect('mongodb+srv://sophiaoliveira2706_db_user:76HX0I3hKgFGmeNO@cluster-produtos.rkztcmf.mongodb.net/Produto?appName=cluster-produtos')
-  .then(() => console.log('Conectado'))
-  .catch((err) => {
-    console.error(err);
-  });
-
-
-  const produtosSchema = new mongoose.Schema({
-    nome:{type: String, required: true},
-    tipo:{type: String, required: true},
-    descricao:{type:String, required: true},
-    categoria:{type:String, required: true},
-    preco:{type:Number, required: true},
-    marca:{type:String, required: true},
-    composicao:{type:String, required: true},
-    tamanho:{type:[Number], required: true},
-    image:{type: String,  required:true},
-  }, {timestamps:true}
-
-);
+const produtosSchema = new mongoose.Schema({
+  nome: { type: String, required: true },
+  tipo: { type: String, required: true },
+  descricao: { type: String, required: true },
+  categoria: { type: String, required: true },
+  preco: { type: Number, required: true },
+  marca: { type: String, required: true },
+  composicao: { type: String, required: true },
+  tamanho: { type: [Number], required: true },
+  image: { type: String, required: true },
+}, { timestamps: true });
 
 const Produto = mongoose.model('Produto', produtosSchema);
 
 app.get('/produto', async (req, res) => {
-    const produtosDoBanco = await Produto.find()
-    res.json(produtosDoBanco)
+  try {
+    res.json(await Produto.find());
+  } catch (err) {
+    console.error('[GET /produto]', err.message);
+    res.status(500).json({ erro: 'Erro ao buscar produtos' });
+  }
 });
 
+const PORT = process.env.PORT || 3003;
 
-app.listen(3003,()=>{
-    console.log('servidor rodando')
-});
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('Mongo conectado');
+    app.listen(PORT, () => console.log(`Servidor na ${PORT}`));
+  })
+  .catch(err => {
+    console.error('Falha no Mongo:', err.message);
+    process.exit(1);
+  });
