@@ -5,9 +5,7 @@ import mongoose from 'mongoose';
 
 const app = express();
 
-app.use(cors({
-  origin: ['http://localhost:5173', 'https://SEU_USUARIO.github.io'],
-}));
+app.use(cors());
 app.use(express.json());
 
 const produtosSchema = new mongoose.Schema({
