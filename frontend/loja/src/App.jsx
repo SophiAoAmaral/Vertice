@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
+import { Header } from "../components/Header/Header";
 
 function App() {
     const [dados, setDados] = useState([])
@@ -16,11 +17,10 @@ function App() {
   },[])
 
   return (
-    <div className="bg-amber-900 text-2xl">
-      aaaaaaaaaaaaaaaaaaaaaaaa
+    <>
+      <Header/>
 
-
-    </div>
+    </>
   )
 }
 
