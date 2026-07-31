@@ -9,7 +9,7 @@ export const Header = () => {
         <div className='container'>
             <nav className='flex justify-between pt-5 items-center'>
                 <Link to='/' className='text-2xl font-bold uppercase'>Vértice</Link>
-                <ul className='flex gap-10 '>
+                <ul className='flex gap-10 **hover:text-'>
                     <Link to='/'>Inicio</Link>
                     <Link to='/produtos'>Produtos</Link>
                     <Link to='/sobre'>Sobre</Link>

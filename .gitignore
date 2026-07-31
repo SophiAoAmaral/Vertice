@@ -3,13 +3,6 @@ node_modules/
 jspm_packages/
 web_modules/
 
-# Variáveis de ambiente e segredos
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-*.env
 
 # Logs do sistema e de pacotes
 logs
