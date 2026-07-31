@@ -1,4 +1,13 @@
 @import "tailwindcss";
+*{
+  box-sizing: border-box;
+}
+@theme {
+--color-azul:#1f4dff;
+--color-azul-hover:#173de0;
+}
+
+
 
 @layer components {
   .container {

@@ -1,10 +1,16 @@
-# Dependências
+
 node_modules/
 jspm_packages/
 web_modules/
 
 
-# Logs do sistema e de pacotes
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+
 logs
 *.log
 npm-debug.log*

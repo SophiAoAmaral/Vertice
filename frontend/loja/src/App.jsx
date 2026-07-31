@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
 import { Header } from "../components/Header/Header";
+import { Route, Routes } from "react-router";
+import { Home } from "../pages/Home";
 
 function App() {
     const [dados, setDados] = useState([])
@@ -19,6 +21,16 @@ function App() {
   return (
     <>
       <Header/>
+
+
+
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path='/produtos' element={<></>}/>
+        <Route path="/sobre" element={<></>} />
+        <Route path="/contato" element={<></>} />
+        <Route path="/carrinho" element={<></>}/>
+      </Routes>
 
     </>
   )
