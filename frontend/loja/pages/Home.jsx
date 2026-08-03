@@ -18,16 +18,16 @@ export const Home = ({dados,setDados}) => {
 
 
   return (
-    <section className="container mt-13">
-      <div className="grid grid-cols-2 gap-30">
-        <div className="flex flex-col gap-5 items-start">
+    <section className="container md:mt-13">
+      <div className="grid md:grid-cols-2  md:gap-30 ">
+        <div className="flex flex-col gap-5 md:items-start text-center md:text-start z-50">
           <span className="border border-azul/20 p-2 rounded-2xl inline-block bg-azul/10 uppercase text-azul font-bold text-sm">
             Coleção Performance 2026
           </span>
-          <h1 className="text-9xl uppercase font-bold leading-27">
+          <h1 className="md:text-9xl text-5xl uppercase font-bold md:leading-27 ">
             Treine além do <span className="text-azul">limite</span>
           </h1>
-          <p className="text-xl text-black/60">
+          <p className="text-xl text-white md:text-black/60">
             Equipamentos e vestuário de alta performance para quem não aceita o
             suficiente. Engenharia testada no asfalto, na esteira e no ferro.
           </p>
@@ -39,13 +39,13 @@ export const Home = ({dados,setDados}) => {
           </Link>
         </div>
         <div>
-          <img src={capa} alt="" />
+          <img src={capa} alt="" className='md:relative absolute md:top-0 top-25 left-0 object-cover shadow-inner-'/>
         </div>
       </div>
-      <div className="mt-20 mb-10 flex justify-between border-y py-7 border-black/20">
+      <div className="mt-20 mb-10 flex md:justify-between border-y md:py-7 border-black/20">
         {list.map((item) => (
-          <div className="flex flex-col">
-            <span className="text-4xl text-azul font-bold">{item.title}</span>
+          <div className="md:flex flex-col hidden">
+            <span className="text-xl md:text-4xl text-azul font-bold">{item.title}</span>
             <span className="text-sm font-light">{item.text}</span>
           </div>
         ))}

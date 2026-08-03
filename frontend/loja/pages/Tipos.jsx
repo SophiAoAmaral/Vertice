@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 
 export const Tipos = ({dados, setDados}) => {
    const { categoria } = useParams();
@@ -13,7 +13,11 @@ export const Tipos = ({dados, setDados}) => {
   return (
     <div>
         {itensFiltrados.map((item)=>(
-            <p>{item.nome}</p>
+            <Link to={`/produto/${item._id}`} key={item._id}>
+                <div>
+                    <h3>{item.nome}</h3>
+                </div>
+            </Link>
         ))}
     </div>
   )
