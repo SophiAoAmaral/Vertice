@@ -3,9 +3,10 @@ import { Link } from 'react-router'
 
 export const Produtos = ({dados,setDados}) => {
     
-   if (!dados) {
+   if (dados.length === 0) {
     return <h1>Carregando...</h1>;
-  }
+  };
+
   return (
     <div className='container grid grid-cols-2 gap-10 mt-30'>
         {dados.map((dado)=>(

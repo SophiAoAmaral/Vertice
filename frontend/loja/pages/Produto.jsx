@@ -14,7 +14,7 @@ export const Produto = ({dados}) => {
   return (
     <div className='container mt-10'>
         <div>
-            <img src={produto.image} alt={produto.nome} className='w-150 h-150'/>
+            <img src={produto.image} alt={produto.nome} className='w-150 h-150 object-contain'/>
             <div>
                 
             </div>
