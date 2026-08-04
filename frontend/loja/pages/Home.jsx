@@ -58,7 +58,7 @@ export const Home = ({dados,setDados}) => {
           </Link>
         </div>
 
-        <div className="flex md:gap-10 items-center justify-center flex-wrap">
+        <div className="flex md:gap-10 items-center justify-center flex-wrap border-b border-black/30 pb-20 ">
           {categorias.map((categoria) => (
             <Link
               key={categoria}
@@ -69,6 +69,25 @@ export const Home = ({dados,setDados}) => {
                 <p className="uppercase md:text-2xl font-bold">{categoria}</p>
               </div>
             </Link>
+          ))}
+        </div>
+      </div>
+
+
+
+      <div className='mt-15'>
+        <h1 className='text-3xl uppercase font-bold mb-15'>Mais vendidos</h1>
+        <div className='grid grid-cols-3 gap-6'>
+          {dados.slice(0, 6).map((produto) => (
+            <div className='border border-black/20 rounded-2xl p-6'>
+              <Link key={produto._id} to={`/produto/${produto._id}`} className='flex flex-col gap-2'>
+              <img src={produto.image} className='w-100' alt="" />
+              <span className='uppercase text-black/40 font-bold tracking-widest text-sm'>{produto.categoria}</span>
+                  <h3 className='text-2xl font-bold'>{produto.nome}</h3>
+                  <span className='font-semibold text-xl'>R$ {produto.preco}</span>
+              </Link>
+              <button className='border rounded-2xl w-85 mt-3 py-2 cursor-pointer hover:bg-azul hover:text-white'>Adicionar</button>
+            </div>
           ))}
         </div>
       </div>
