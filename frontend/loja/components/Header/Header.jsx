@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router'
 
-export const Header = () => {
+export const Header = ({carrinho}) => {
   return (
     
     <header className='border-b pb-6 border-black/20'>
@@ -15,7 +15,7 @@ export const Header = () => {
                     <Link to='/sobre'>Sobre</Link>
                     <Link to='/contato'>Contato</Link>
                 </ul>
-                <Link to='/carrinho'>Carrinho</Link>
+                <Link to='/carrinho'>Carrinho {carrinho.length}</Link>
             </nav>
         </div>
     </header>

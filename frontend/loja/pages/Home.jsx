@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import { useState } from 'react'
 
 
-export const Home = ({dados,setDados}) => {
+export const Home = ({dados,setDados,adicionarCarrinho }) => {
   const list = [
     {title:'40 pts', text:'controle de qualidade'},
     {title:'30 dias', text:'para trocar'},
@@ -75,7 +75,7 @@ export const Home = ({dados,setDados}) => {
 
 
 
-      <div className='mt-1'>
+      <div className='mt-1 mb-10'>
         <h1 className='text-3xl uppercase font-bold mb-10 mt-10'>Mais vendidos</h1>
         <div className='grid grid-cols-3 gap-6'>
           {dados.slice(0, 6).map((produto) => (
@@ -86,10 +86,15 @@ export const Home = ({dados,setDados}) => {
                   <h3 className='text-2xl font-bold'>{produto.nome}</h3>
                   <span className='font-semibold text-xl'>R$ {produto.preco}</span>
               </Link>
-              <button className='border rounded-2xl w-85 mt-3 py-2 cursor-pointer hover:bg-azul hover:text-white'>Adicionar</button>
+              <button className='border rounded-2xl w-85 mt-3 py-2 cursor-pointer hover:bg-azul hover:text-white'  onClick={() => adicionarCarrinho(produto)}>Adicionar</button>
             </div>
           ))}
         </div>
+      </div>
+
+
+      <div className='border'>
+
       </div>
     </section>
   );

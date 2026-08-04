@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Link, useParams } from 'react-router';
 
-export const Tipos = ({dados, setDados}) => {
+export const Tipos = ({dados, setDados, adicionarCarrinho}) => {
    const { categoria } = useParams();
 
   const itensFiltrados = dados.filter(
@@ -18,7 +18,7 @@ export const Tipos = ({dados, setDados}) => {
           {itensFiltrados.map((item)=>(
               <div className='border border-black/20 rounded-2xl p-6'>
                 <Link to={`/produto/${item._id}`} key={item._id} className='flex flex-col gap-2'>
-                      <img src={item.image} className='w-100' alt="" />
+                      <img src={item.image} className='w-100 h-90 object-contain' alt="" />
                       <h3>{item.nome}</h3>
                       <span className='font-semibold text-xl'>R$ {item.preco}</span>
                 </Link>

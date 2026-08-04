@@ -6,9 +6,11 @@ import { Home } from "../pages/Home";
 import { Produtos } from "../pages/Produtos";
 import { Produto } from "../pages/Produto";
 import { Tipos } from "../pages/Tipos";
+import { Carrinho } from "../pages/Carrinho";
 
 function App() {
-    const [dados, setDados] = useState([])
+    const [dados, setDados] = useState([]);
+    const [carrinho, setCarrinho] = useState([]);
 
       useEffect(()=>{
     async function Busca() {
@@ -19,22 +21,29 @@ function App() {
     }
 
     Busca()
-  },[])
+  },[]);
+
+  function adicionarCarrinho(produto) {
+  setCarrinho((carrinhoAtual) => [
+    ...carrinhoAtual,
+    produto
+  ]);
+}
 
   return (
     <>
-      <Header/>
+      <Header carrinho={carrinho}/>
 
 
 
       <Routes>
-        <Route path="/" element={<Home dados={dados} setDados={setDados}/>} />
-        <Route path='/produtos' element={<Produtos dados={dados} setDados={setDados} />}/>
+        <Route path="/" element={<Home dados={dados} setDados={setDados} adicionarCarrinho={adicionarCarrinho}/>} />
+        <Route path='/produtos' element={<Produtos dados={dados} setDados={setDados}  adicionarCarrinho={adicionarCarrinho}/>}/>
         <Route path="/sobre" element={<></>} />
         <Route path="/contato" element={<></>} />
-        <Route path="/carrinho" element={<></>}/>
-        <Route path="/produto/:id" element={<Produto dados={dados} setDados={setDados}/>} />
-        <Route path="/itens/:categoria" element={<Tipos dados={dados} setDados={setDados}/>} />
+        <Route path="/carrinho" element={<Carrinho carrinho={carrinho}/> }/>
+        <Route path="/produto/:id" element={<Produto dados={dados} setDados={setDados}/>} adicionarCarrinho={adicionarCarrinho}/>
+        <Route path="/itens/:categoria" element={<Tipos dados={dados} setDados={setDados} adicionarCarrinho={adicionarCarrinho}/>} />
       </Routes>
 
     </>

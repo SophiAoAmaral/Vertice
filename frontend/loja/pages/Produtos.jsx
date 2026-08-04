@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { useState } from 'react';
 
-export const Produtos = ({dados,setDados}) => {
+export const Produtos = ({dados,setDados,adicionarCarrinho}) => {
     const [filtro, setFiltro]= useState('todos');
     const itensFiltrados = filtro === 'todos' ? dados : dados.filter(item => item.categoria === filtro);
    if (dados.length === 0) {
@@ -41,7 +41,7 @@ export const Produtos = ({dados,setDados}) => {
                         ))}
                     </div>
                 <div className='flex justify-center flex-col-reverse mt-2  gap-2 mb-9 items-center '>
-                        <button className='border rounded-2xl py-3 px-5 '>Adicionar ao carrinho</button>
+                        <button className='border rounded-2xl py-3 px-5 ' onClick={() => adicionarCarrinho(dado)}>Adicionar ao carrinho</button>
                         <button className='rounded-2xl py-3 px-5 bg-azul text-white hover:bg-azul-hover w-50'>Comprar</button>
                     </div>
             </div>

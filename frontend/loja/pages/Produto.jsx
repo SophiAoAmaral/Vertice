@@ -13,10 +13,10 @@ export const Produto = ({dados}) => {
   }
   return (
     <div className='container mt-10'>
-        <div>
-            <img src={produto.image} alt={produto.nome} className='w-150 h-150 object-contain'/>
+        <div className='flex gap-20'>
+            <img src={produto.image} alt={produto.nome} className='w-150 h-130 object-contain'/>
             <div>
-                
+                <h1 className='text-4xl font-bold mt-5'>{produto.nome}</h1>
             </div>
         </div>
         
