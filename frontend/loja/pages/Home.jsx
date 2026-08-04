@@ -75,8 +75,8 @@ export const Home = ({dados,setDados}) => {
 
 
 
-      <div className='mt-15'>
-        <h1 className='text-3xl uppercase font-bold mb-15'>Mais vendidos</h1>
+      <div className='mt-1'>
+        <h1 className='text-3xl uppercase font-bold mb-10 mt-10'>Mais vendidos</h1>
         <div className='grid grid-cols-3 gap-6'>
           {dados.slice(0, 6).map((produto) => (
             <div className='border border-black/20 rounded-2xl p-6'>
