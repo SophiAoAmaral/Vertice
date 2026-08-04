@@ -32,7 +32,7 @@ export const Home = ({dados,setDados}) => {
             suficiente. Engenharia testada no asfalto, na esteira e no ferro.
           </p>
           <Link
-            to=""
+            to="/produtos"
             className="border py-4 px-6 rounded-2xl bg-azul text-white text-lg mt-2 hover:bg-azul-hover font-bold"
           >
             Explorar loja
