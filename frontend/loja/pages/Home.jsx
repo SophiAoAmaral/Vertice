@@ -19,17 +19,16 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
 
   return (
     <section className="container md:mt-13">
-      <div className="grid md:grid-cols-2  md:gap-30 ">
-        <div className="flex flex-col gap-5 md:items-start text-center md:text-start z-50">
+      <div className="grid md:grid-cols-[700px_auto]  md:gap-30 ">
+        <div className="flex flex-col gap-5 md:items-start text-center md:text-start z-50 w-190">
           <span className="border border-azul/20 p-2 rounded-2xl inline-block bg-azul/10 uppercase text-azul font-bold text-sm">
-            Coleção Performance 2026
+            Revendedora autorizada 
           </span>
-          <h1 className="md:text-9xl text-5xl uppercase font-bold md:leading-27 ">
-            Treine além do <span className="text-azul">limite</span>
+          <h1 className="md:text-8xl text-5xl uppercase font-extrabold md:leading-27 ">
+            As maiores marcas do <span className="text-azul">esporte</span>
           </h1>
-          <p className="text-xl text-white md:text-black/60">
-            Equipamentos e vestuário de alta performance para quem não aceita o
-            suficiente. Engenharia testada no asfalto, na esteira e no ferro.
+          <p className="text-xl text-white md:text-black/60 w-[600px]">
+            Nike, Adidas, Asics, Under Armour e muito mais em um só lugar. Produtos 100% originais, com nota fiscal e garantia oficial do fabricante.
           </p>
           <Link
             to="/produtos"
@@ -93,8 +92,13 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
       </div>
 
 
-      <div className='border'>
+      <div className='border grid grid-cols-2'>
+          <div>
 
+          </div>
+          <div className='bg-azul'>
+            <h1></h1>
+          </div>
       </div>
     </section>
   );

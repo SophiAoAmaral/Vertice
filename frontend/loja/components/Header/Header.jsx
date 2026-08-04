@@ -15,7 +15,7 @@ export const Header = ({carrinho}) => {
                     <Link to='/sobre'>Sobre</Link>
                     <Link to='/contato'>Contato</Link>
                 </ul>
-                <Link to='/carrinho'>Carrinho {carrinho.length}</Link>
+                <Link to='/carrinho'>Carrinho <span className='bg-azul px-2 py-1 rounded-xl text-white'>{carrinho.length}</span></Link>
             </nav>
         </div>
     </header>
