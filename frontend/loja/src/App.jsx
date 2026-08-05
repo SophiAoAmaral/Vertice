@@ -7,6 +7,7 @@ import { Produtos } from "../pages/Produtos";
 import { Produto } from "../pages/Produto";
 import { Tipos } from "../pages/Tipos";
 import { Carrinho } from "../pages/Carrinho";
+import { Footer } from "../components/Header/Footer";
 
 function App() {
     const [dados, setDados] = useState([]);
@@ -46,6 +47,8 @@ function App() {
         <Route path="/itens/:categoria" element={<Tipos dados={dados} setDados={setDados} adicionarCarrinho={adicionarCarrinho}/>} />
       </Routes>
 
+
+      <Footer/>
     </>
   )
 }
