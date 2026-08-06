@@ -8,6 +8,7 @@ import { Produto } from "../pages/Produto";
 import { Tipos } from "../pages/Tipos";
 import { Carrinho } from "../pages/Carrinho";
 import { Footer } from "../components/Header/Footer";
+import { Sobre } from "../pages/Sobre";
 
 function App() {
     const [dados, setDados] = useState([]);
@@ -40,7 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home dados={dados} setDados={setDados} adicionarCarrinho={adicionarCarrinho}/>} />
         <Route path='/produtos' element={<Produtos dados={dados} setDados={setDados}  adicionarCarrinho={adicionarCarrinho}/>}/>
-        <Route path="/sobre" element={<></>} />
+        <Route path="/sobre" element={<Sobre/>} />
         <Route path="/contato" element={<></>} />
         <Route path="/carrinho" element={<Carrinho carrinho={carrinho}/> }/>
         <Route path="/produto/:id" element={<Produto dados={dados} setDados={setDados}/>} adicionarCarrinho={adicionarCarrinho}/>

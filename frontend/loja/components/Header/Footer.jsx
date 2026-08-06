@@ -8,9 +8,9 @@ export const Footer = () => {
     
     ]
   return (
-    <footer className='bg-black text-white p-10'>
-        <div className='container flex flex-wrap justify-between'>
-            <div className='w-100'>
+    <footer className='bg-black text-white p-5 md:p-10'>
+        <div className='container flex flex-wrap justify-around md:justify-between gap-5 md:gap-0 text-center'>
+            <div className='md:w-100'>
                 <h3 className='uppercase font-extrabold text-3xl'>Vértice</h3>
                 <p className='text-[#8A929E] mt-2'>Revendedora multimarcas de artigos esportivos. Produtos originais das maiores marcas do mundo, com nota fiscal e garantia.</p>
             </div>
@@ -31,7 +31,7 @@ export const Footer = () => {
                
            
         </div>
-        <div className='border-t border-[#8A929E]/50 mt-10 text-[#8A929E]/50 flex justify-between text-sm container py-4' >
+        <div className='border-t border-[#8A929E]/50 mt-10 text-[#8A929E]/50 flex  justify-between text-xs flex-wrap md:flex-nowrap  md:text-sm container py-4' >
                 <p>© 2026 Vértice Sports — revendedora multimarcas.</p>
                 <p>Todas as marcas citadas pertencem aos seus respectivos titulares.</p>
         </div>

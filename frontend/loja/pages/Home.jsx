@@ -17,7 +17,8 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
   const categorias = [...new Set(dados.map(item => item.categoria))];
   const [filtro, setFiltro] = useState('todos');
   const itensFiltrados = filtro === 'todos' ? dados : dados.filter(item => item.categoria === filtro);
-  
+  const [click, setClick]= useState(false)
+
 
   return (
     <section className="container md:mt-13 mt-5">
@@ -26,7 +27,7 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
           <span className="border border-azul/20 p-2 rounded-2xl md:inline-block bg-azul/10 uppercase text-azul font-bold text-sm">
             Revendedora autorizada 
           </span>
-          <h1 className="md:text-8xl text-5xl uppercase font-extrabold md:leading-27 ">
+          <h1 className="md:text-8xl text-5xl uppercase font-black md:leading-27 ">
             As maiores marcas do <span className="text-azul">esporte</span>
           </h1>
           <p className="text-xltext-black/60 md:w-[600px]">
@@ -55,7 +56,7 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
         ))}
       </div>
       <div>
-        <div className='flex justify-between mb-5 md:mb-10 md:mt-40 md:mt-0'>
+        <div className='flex justify-between mb-5 md:mb-10 md:mt-0 '>
           <h1 className='text-3xl uppercase font-bold'>Categorias</h1>
           <Link to="/produtos" className='text-azul hover:text-azul-hover font-bold'>
               Ver todos
@@ -88,9 +89,9 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
       <div className="w-10 h-10 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin"></div>
     </div>
   ) : (
-    <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+    <div className="flex flex-col  md:grid md:grid-cols-3 gap-5 md:gap-6">
       {dados.slice(0, 6).map((produto) => (
-        <div key={produto._id} className="border border-black/20 rounded-2xl p-2 md:p-6">
+        <div key={produto._id} className=" flex flex-col border border-black/20 rounded-2xl p-2 md:p-6">
           <Link
             to={`/produto/${produto._id}`}
             className="flex flex-col gap-2"
@@ -106,10 +107,10 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
           </Link>
 
           <button
-            className="border rounded-2xl w-85 mt-3 py-2 cursor-pointer hover:bg-azul hover:text-white"
+            className="border mb-2 mx-auto  rounded-2xl mt-3 py-2 px-4  cursor-pointer hover:bg-azul hover:text-white "
             onClick={() => adicionarCarrinho(produto)}
           >
-            Adicionar
+            Adicionar ao carrinho 
           </button>
         </div>
       ))}
@@ -150,6 +151,18 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
           }
         </div>
       </div>
+
+
+      <article className='bg-[#F7F8FA] flex flex-wrap text-center gap-2 justify-between p-5 md:p-10 items-center mb-7  rounded-2xl shadow-xl'>
+          <div className='w-140'>
+              <h1 className='text-2xl md:text-6xl font-extrabold uppercase mb-3 '>-10% na primeira compra</h1>
+              <span>Assine e receba lançamentos e ofertas exclusivas antes de todo mundo.</span>
+          </div>
+          <div>
+              <input type="text" name="" id="" placeholder='seuemail@example.com' className='border border-gray-200 rounded-2xl px-7 py-2  md:w-90 mb-2' />
+              <button onClick={()=> setClick(true)} className='bg-azul text-white px-5 py-2 rounded-2xl'>{click ? 'Inscrito ✓' : 'Assinar'}</button>
+          </div>
+      </article>
     </section>
   );
 }
