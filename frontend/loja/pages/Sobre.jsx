@@ -1,5 +1,6 @@
 import React from 'react'
-import fachada from '../public/fachada-vertice.png'
+import fachada from '../public/fachada-vertice.png';
+import { Link } from 'react-router';
 export const Sobre = () => {
     const itens = [
         {id:'01',title:'Peças originais', text:'Compramos apenas de distribuidores autorizados. Nota fiscal e garantia do fabricante em todo pedido.' },
@@ -32,6 +33,12 @@ export const Sobre = () => {
                     ))
                 }
             </div>
+        </div>
+
+        <div className='bg-azul flex flex-col text-center items-center justify-center p-15 my-10 gap-3 text-white rounded-3xl'>
+                <h1 className='text-6xl uppercase font-black'>Sua marca favorita está aqui</h1>
+                <p>Explore o catálogo com Nike, Adidas, Asics, Under Armour e mais.</p>
+                <Link to='/produtos' className='text-azul bg-white py-2 px-4 rounded-2xl font-bold'>Ver todas as marcas</Link>
         </div>
     </section>
   )

@@ -13,6 +13,7 @@ import { Sobre } from "../pages/Sobre";
 function App() {
     const [dados, setDados] = useState([]);
     const [carrinho, setCarrinho] = useState([]);
+    const [tamanhoSelecionado, setTamanhoSelecionado] = useState({});
 
       useEffect(()=>{
     async function Busca() {
@@ -25,11 +26,35 @@ function App() {
     Busca()
   },[]);
 
-  function adicionarCarrinho(produto) {
-  setCarrinho((carrinhoAtual) => [
-    ...carrinhoAtual,
-    produto
-  ]);
+function adicionarCarrinho(produto, tamanhoSelecionado) {
+  setCarrinho((atual) => {
+    const itemExiste = atual.find(
+      (item) =>
+        item._id === produto._id &&
+        item.tamanhoSelecionado === tamanhoSelecionado
+    );
+
+    if (itemExiste) {
+      return atual.map((item) =>
+        item._id === produto._id &&
+        item.tamanhoSelecionado === tamanhoSelecionado
+          ? {
+              ...item,
+              quantidade: item.quantidade + 1,
+            }
+          : item
+      );
+    }
+
+    return [
+      ...atual,
+      {
+        ...produto,
+        tamanhoSelecionado,
+        quantidade: 1,
+      },
+    ];
+  });
 }
 
   return (
@@ -43,8 +68,8 @@ function App() {
         <Route path='/produtos' element={<Produtos dados={dados} setDados={setDados}  adicionarCarrinho={adicionarCarrinho}/>}/>
         <Route path="/sobre" element={<Sobre/>} />
         <Route path="/contato" element={<></>} />
-        <Route path="/carrinho" element={<Carrinho carrinho={carrinho}/> }/>
-        <Route path="/produto/:id" element={<Produto dados={dados} setDados={setDados}/>} adicionarCarrinho={adicionarCarrinho}/>
+        <Route path="/carrinho" element={<Carrinho carrinho={carrinho} setCarrinho={setCarrinho}/> }/>
+        <Route path="/produto/:id" element={<Produto dados={dados} setDados={setDados}  adicionarCarrinho={adicionarCarrinho}  />}/>
         <Route path="/itens/:categoria" element={<Tipos dados={dados} setDados={setDados} adicionarCarrinho={adicionarCarrinho}/>} />
       </Routes>
 
