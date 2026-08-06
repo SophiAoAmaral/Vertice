@@ -31,10 +31,11 @@ export const Produto = ({dados, adicionarCarrinho}) => {
   >
     {tam}
   </button>
-))}
+))}   
+        <button onClick={() => adicionarCarrinho(produto,tamanhoSelecionado)}>Adiconar ao carrinho</button>
             </div>
 
-            <button onClick={() => adicionarCarrinho(produto,tamanhoSelecionado)}>Adiconar ao carrinho</button>
+            
         </div>
         
     </div>

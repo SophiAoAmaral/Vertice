@@ -105,13 +105,6 @@ export const Home = ({dados,setDados,adicionarCarrinho }) => {
               R$ {produto.preco}
             </span>
           </Link>
-
-          <button
-            className="border mb-2 mx-auto  rounded-2xl mt-3 py-2 px-4  cursor-pointer hover:bg-azul hover:text-white "
-            onClick={() => adicionarCarrinho(produto)}
-          >
-            Adicionar ao carrinho 
-          </button>
         </div>
       ))}
     </div>
