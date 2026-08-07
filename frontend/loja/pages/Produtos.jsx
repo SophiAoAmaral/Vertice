@@ -25,7 +25,7 @@ export const Produtos = ({dados,setDados,adicionarCarrinho, tamanhosSelecionados
         <h1 className="text-7xl uppercase font-bold my-9">Catálogo</h1>
       </div>
 
-      <article className="flex gap-6 ">
+      <article className="flex flex-wrap gap-6 ">
         <button
           onClick={() => setFiltro("todos")}
           className={` buttonFiltro transition ${filtro === "todos" ? " active " : "desable"}`}
@@ -63,17 +63,17 @@ export const Produtos = ({dados,setDados,adicionarCarrinho, tamanhosSelecionados
           Ciclismo
         </button>
       </article>
-      <div className="grid  grid-cols-[repeat(3,_400px)] mt-10 gap-9 ">
+      <div className="grid  md:grid-cols-[repeat(3,_400px)] mt-10 gap-4 md:gap-9 ">
         {itensFiltrados.map((dado) => (
           <div
             key={dado.id}
-            className="flex flex-col border border-black/20 md:p-6 rounded-2xl shadow"
+            className="flex flex-col border border-black/20 md:p-6 p-3 rounded-2xl shadow"
           >
             <Link to={`/produto/${dado._id}`} className="inline-block ">
               <img
                 src={dado.image}
                 alt={dado.nome}
-                className="h-100 w-100 object-contain mb-2 rounded-2xl"
+                className="md:h-100 md:w-100 object-contain mb-2 rounded-2xl"
               />
               <div className="flex justify-between items-center">
                 <h3 className='text-lg font-bold'>{dado.nome}</h3>

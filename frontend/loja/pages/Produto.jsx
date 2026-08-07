@@ -18,18 +18,18 @@ export const Produto = ({dados, adicionarCarrinho}) => {
     </div>;
   }
   return (
-    <div className="container mt-10">
-      <div className="flex gap-10">
+    <div className="container  md:mt-10">
+      <div className="flex flex-wrap md:flex-nowrap md:gap-10">
         <img
           src={produto.image}
           alt={produto.nome}
-          className="w-150 h-130 object-contain"
+          className="md:w-150 md:h-130 my-5 object-contain"
         />
         <div className="flex flex-col w-120 gap-1">
           <span className="border border-azul/20 p-3 rounded-2xl md:inline-block bg-azul/10 uppercase text-azul font-bold text-sm inline-block self-start">
             {produto.marca} · produto original
           </span>
-          <h1 className="text-5xl font-bold my-2">{produto.nome}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold my-2">{produto.nome}</h1>
 
           <div className='mb-1'>
             <p className="text-2xl">R${produto.preco}</p>
@@ -47,7 +47,7 @@ export const Produto = ({dados, adicionarCarrinho}) => {
                 <button
                   key={tam}
                   onClick={() => setTamanhoSelecionado(tam)}
-                  className={`inline-block  border border-black/50 py-2 px-3 rounded-xl cursor-pointer
+                  className={`inline-block  border border-black/50 py-1 px-2 md:py-2 md:px-3 rounded-xl cursor-pointer
                           ${
                             tamanhoSelecionado === tam
                               ? "bg-azul text-white border-0"
@@ -73,7 +73,7 @@ export const Produto = ({dados, adicionarCarrinho}) => {
             {adicionado ? "Adicionado ✓" : "Adicionar ao carrinho"}
           </button>
 
-          <div className="flex gap-5 *:border border-b pb-5 border-[#5C6470]/30 *:border-[#5C6470] *:rounded-xl *:bg-[#F7F8FA] *:p-2 *:text-[#5C6470]">
+          <div className="flex gap-3 md:gap-5 *:border *:text-xs *md:text-base border-b  pb-5 border-[#5C6470]/30 *:border-[#5C6470] *:rounded-xl *:bg-[#F7F8FA] *:px-1 *:py-2 *:md:p-2 *:text-[#5C6470]">
             <span>Frere grátis</span>
             <span>Troca em 30 dias</span>
             <span>Original com nota fiscal</span>
