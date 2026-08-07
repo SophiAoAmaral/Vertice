@@ -7,14 +7,16 @@ export const Produtos = ({dados,setDados,adicionarCarrinho, tamanhosSelecionados
     const itensFiltrados = filtro === 'todos' ? dados : dados.filter(item => item.categoria === filtro);
    
    if (dados.length === 0) {
-    return <h1>Carregando...</h1>;
+    <div className="flex justify-center py-20">
+      <div className="w-10 h-10 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin"></div>
+    </div>
   };
   console.log(tamanhosSelecionados)
   return (
     <div className="container">
-      <div className="mt-20">
-        <Link to="/">Inicio/Produtos</Link>
-        <h1 className="text-7xl uppercase font-bold my-9">Catalogo</h1>
+      <div className="mt-10">
+        <Link to="/" className='text-azul hover:text-azul-hover'>← Voltar</Link>
+        <h1 className="text-7xl uppercase font-bold my-9">Catálogo</h1>
       </div>
 
       <article className="flex gap-6 ">
@@ -68,7 +70,7 @@ export const Produtos = ({dados,setDados,adicionarCarrinho, tamanhosSelecionados
                 className="h-100 w-100 object-contain mb-2 rounded-2xl"
               />
               <div className="flex justify-between items-center">
-                <h3 className='text-xl font-bold'>{dado.nome}</h3>
+                <h3 className='text-lg font-bold'>{dado.nome}</h3>
                 <span>R$ {dado.preco}</span>
               </div>
             </Link>
