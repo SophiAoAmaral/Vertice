@@ -1,7 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router';
+import { Produto } from './Produto';
 
 export const Carrinho = ({carrinho, setCarrinho}) => {
-  
+const subtotal = carrinho.reduce((total, produto)=>{
+  return total + produto.preco * produto.quantidade;
+}, 0)
+const frete = subtotal > 299 ? 0 : 25;
+const total = subtotal + frete;
+
+
 function aumentarQuantidade(id, tamanho) {
   setCarrinho((carrinhoAtual) =>
     carrinhoAtual.map((item) =>
@@ -48,7 +56,8 @@ function removerItem(id, tamanho) {
   );
 }
 
-console.log(carrinho)
+console.log(carrinho);
+
   return (
     <div className="container">
       {carrinho.map((produto) => (
@@ -56,7 +65,9 @@ console.log(carrinho)
           key={produto._id}
           className="border-b border-black/50 flex gap-20 w-300 p-5 "
         >
-          <img src={produto.image} className="w-50" alt="" />
+          <Link to={`/produto/${produto._id}`}>
+            <img src={produto.image} className="w-50" alt="" />
+          </Link>
           <div>
             <h2 className="text-4xl font-bold">{produto.nome}</h2>
 
@@ -105,6 +116,29 @@ console.log(carrinho)
           </div>
         </div>
       ))}
+      {carrinho.length > 0 && (
+        <div className="flex justify-end">
+          <div className="bg-gray-100 p-5 rounded-xl  w-100 mt-5">
+            <h2 className="text-2xl font-bold mb-4">Resumo do pedido</h2>
+            <div className="flex justify-between">
+              <span>Subtotal</span>
+              <span>R$ {subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Frete</span>
+              <span>R$ {frete.toFixed(2)}</span>
+            </div>
+            <hr className="my-4" />
+            <div className="flex justify-between font-bold text-xl">
+              <span>Total</span>
+              <span>R$ {total.toFixed(2)}</span>
+            </div>
+            <button className="bg-black text-white w-full mt-5 py-3 rounded-xl">
+              Finalizar compra
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
