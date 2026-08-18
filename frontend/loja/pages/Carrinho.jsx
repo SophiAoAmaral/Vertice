@@ -60,9 +60,9 @@ function removerItem(id, tamanho) {
 console.log(carrinho);
 
   return (
-    <div className="container">
+    <div className="container mt-10">
       {carrinho.length === 0 ? (
-        <div className='text-center mt-15 mb-35 flex flex-col gap-4'>
+        <div className='text-center mt-30 mb-35 flex flex-col gap-4'>
           <h2 className='text-4xl'>Seu carrinho esta vazio</h2>
           <p>Navegue pelas categorias da loja ou faça uma busca pelo seu produto.</p>
           <button className='border-2 self-center py-2 px-4 rounded-2xl cursor-pointer' onClick={()=> navigate('/')}>Voltar para o site</button>
@@ -72,40 +72,42 @@ console.log(carrinho);
               {carrinho.map((produto) => (
         <div
           key={produto._id}
-          className="border-b border-black/50 flex gap-20 w-300 p-5 "
+          className="border-b border-black/50 flex flex-wrap gap-1 md:gap-20 md:w-300 p-5 "
         >
           <Link to={`/produto/${produto._id}`}>
-            <img src={produto.image} className="w-50" alt="" />
+            <img src={produto.image} className="md:w-50 w-40" alt="" />
           </Link>
           <div>
-            <h2 className="text-4xl font-bold">{produto.nome}</h2>
+            <h2 className="text-2xl md:text-4xl font-bold">{produto.nome}</h2>
 
-            {produto.tamanho?.length > 0 &&
-              (produto.tamanhoSelecionado ? (
-                <p className="text-lg my-2">
-                  Tamanho: {produto.tamanhoSelecionado}
-                </p>
-              ) : (
-                <p className="text-lg my-2">Selecione um tamanho</p>
-              ))}
-            <div className="flex gap-2x bg-gray-200 p-2 mt-2 items-center gap-3 w-25 rounded-2xl">
-              <button
-                className="bg-white px-2 py-1 rounded-[50%]"
-                onClick={() =>
-                  aumentarQuantidade(produto._id, produto.tamanhoSelecionado)
-                }
-              >
-                +
-              </button>
-              <p>{produto.quantidade}</p>
-              <button
-                className="bg-white px-2 py-1 rounded-[50%]"
-                onClick={() =>
-                  diminuirQuantidade(produto._id, produto.tamanhoSelecionado)
-                }
-              >
-                -
-              </button>
+            <div className='flex justify-between items-center mt-2'>
+              {produto.tamanho?.length > 0 &&
+                (produto.tamanhoSelecionado ? (
+                  <p className="text-lg my-2">
+                    Tamanho: {produto.tamanhoSelecionado}
+                  </p>
+                ) : (
+                  <p className="text-lg my-2">Selecione um tamanho</p>
+                ))}
+              <div className="flex bg-gray-200 p-2 mt-2 items-center gap-3 w-25 rounded-2xl">
+                <button
+                  className="bg-white px-2 py-1 rounded-[50%]"
+                  onClick={() =>
+                    aumentarQuantidade(produto._id, produto.tamanhoSelecionado)
+                  }
+                >
+                  +
+                </button>
+                <p>{produto.quantidade}</p>
+                <button
+                  className="bg-white px-2 py-1 rounded-[50%]"
+                  onClick={() =>
+                    diminuirQuantidade(produto._id, produto.tamanhoSelecionado)
+                  }
+                >
+                  -
+                </button>
+              </div>
             </div>
             {produto.quantidade === 0 ? (
               <button
@@ -126,8 +128,8 @@ console.log(carrinho);
         </div>
       ))}
       {carrinho.length > 0 && (
-        <div className="flex justify-end">
-          <div className="bg-gray-100 p-5 rounded-xl  w-100 mt-5">
+        <div className="flex justify-center">
+          <div className="bg-gray-100 p-5 rounded-xl  w-150 mt-5">
             <h2 className="text-2xl font-bold mb-4">Resumo do pedido</h2>
             <div className="flex justify-between">
               <span>Subtotal</span>

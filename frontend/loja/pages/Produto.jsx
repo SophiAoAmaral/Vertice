@@ -19,7 +19,7 @@ export const Produto = ({dados, adicionarCarrinho}) => {
   }
   return (
     <div className="container  md:mt-10">
-      <div className="flex flex-wrap md:flex-nowrap md:gap-10">
+      <div className="flex flex-wrap md:flex-nowrap md:gap-10 items-center justify-center">
         <img
           src={produto.image}
           alt={produto.nome}

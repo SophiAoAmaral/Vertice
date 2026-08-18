@@ -21,11 +21,11 @@ export const Produtos = ({dados,setDados,adicionarCarrinho, tamanhosSelecionados
   return (
     <div className="container">
       <div className="mt-10">
-        <Link to="/" className='text-azul hover:text-azul-hover'>← Voltar</Link>
-        <h1 className="text-7xl uppercase font-bold my-9">Catálogo</h1>
+        <Link to="/" className='text-azul hover:text-azul-hover'> ← Voltar</Link>
+        <h1 className="md:text-7xl text-4xl uppercase font-bold my-9 text-center">Catálogo</h1>
       </div>
 
-      <article className="flex flex-wrap gap-6 ">
+      <article className="flex flex-wrap gap-6 justify-center items-center **:text-sm">
         <button
           onClick={() => setFiltro("todos")}
           className={` buttonFiltro transition ${filtro === "todos" ? " active " : "desable"}`}
@@ -63,7 +63,7 @@ export const Produtos = ({dados,setDados,adicionarCarrinho, tamanhosSelecionados
           Ciclismo
         </button>
       </article>
-      <div className="grid  md:grid-cols-[repeat(3,_400px)] mt-10 gap-4 md:gap-9 ">
+      <div className="grid md:grid-cols-[repeat(3,_400px)] mt-10 gap-4 md:gap-9 items-center justify-center">
         {itensFiltrados.map((dado) => (
           <div
             key={dado.id}
