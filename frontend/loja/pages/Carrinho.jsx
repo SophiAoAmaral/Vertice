@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { Produto } from './Produto';
 
 export const Carrinho = ({carrinho, setCarrinho}) => {
+const navigate = useNavigate()
 const subtotal = carrinho.reduce((total, produto)=>{
   return total + produto.preco * produto.quantidade;
 }, 0)
@@ -60,7 +61,15 @@ console.log(carrinho);
 
   return (
     <div className="container">
-      {carrinho.map((produto) => (
+      {carrinho.length === 0 ? (
+        <div>
+          <h2>Seu carrinho esta vazio</h2>
+          <p>Navegue pelas categorias da loja ou faça uma busca pelo seu produto.</p>
+          <button onClick={()=> navigate('/')}>Voltar para o site</button>
+        </div>
+      ) :(
+        <>
+              {carrinho.map((produto) => (
         <div
           key={produto._id}
           className="border-b border-black/50 flex gap-20 w-300 p-5 "
@@ -139,6 +148,11 @@ console.log(carrinho);
           </div>
         </div>
       )}
+      </>
+      )
+    
+    }
+
     </div>
   );
 }
