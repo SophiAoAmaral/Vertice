@@ -62,10 +62,10 @@ console.log(carrinho);
   return (
     <div className="container">
       {carrinho.length === 0 ? (
-        <div>
-          <h2>Seu carrinho esta vazio</h2>
+        <div className='text-center mt-15 mb-35 flex flex-col gap-4'>
+          <h2 className='text-4xl'>Seu carrinho esta vazio</h2>
           <p>Navegue pelas categorias da loja ou faça uma busca pelo seu produto.</p>
-          <button onClick={()=> navigate('/')}>Voltar para o site</button>
+          <button className='border-2 self-center py-2 px-4 rounded-2xl cursor-pointer' onClick={()=> navigate('/')}>Voltar para o site</button>
         </div>
       ) :(
         <>
