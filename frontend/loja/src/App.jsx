@@ -10,6 +10,7 @@ import { Carrinho } from "../pages/Carrinho";
 import { Footer } from "../components/Header/Footer";
 import { Sobre } from "../pages/Sobre";
 import { Contato } from "../pages/Contato";
+import { Checkout } from "../pages/Checkout";
 
 function App() {
     const [dados, setDados] = useState([]);
@@ -72,6 +73,7 @@ function adicionarCarrinho(produto, tamanhoSelecionado) {
         <Route path="/carrinho" element={<Carrinho carrinho={carrinho} setCarrinho={setCarrinho}/> }/>
         <Route path="/produto/:id" element={<Produto dados={dados} setDados={setDados}  adicionarCarrinho={adicionarCarrinho}  />}/>
         <Route path="/itens/:categoria" element={<Tipos dados={dados} setDados={setDados} adicionarCarrinho={adicionarCarrinho}/>} />
+        <Route path="/checkout" element={<Checkout carrinho={carrinho} setCarrinho={setCarrinho}/>}/>
       </Routes>
 
 

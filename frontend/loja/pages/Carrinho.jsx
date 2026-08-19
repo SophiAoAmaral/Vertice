@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { Produto } from './Produto';
 
 export const Carrinho = ({carrinho, setCarrinho}) => {
-const navigate = useNavigate()
+const navigate = useNavigate();
 const subtotal = carrinho.reduce((total, produto)=>{
   return total + produto.preco * produto.quantidade;
 }, 0)
@@ -144,7 +144,7 @@ console.log(carrinho);
               <span>Total</span>
               <span>R$ {total.toFixed(2)}</span>
             </div>
-            <button className="bg-black text-white w-full mt-5 py-3 rounded-xl">
+            <button onClick={()=> navigate('/checkout')} className="bg-black text-white w-full mt-5 py-3 rounded-xl">
               Finalizar compra
             </button>
           </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from "react-router";
+import { useParams,  Link } from "react-router";
 import { useState } from 'react';
 
 export const Produto = ({dados, adicionarCarrinho}) => {
@@ -11,14 +11,17 @@ export const Produto = ({dados, adicionarCarrinho}) => {
 );
   const [tamanhoSelecionado, setTamanhoSelecionado] = useState(null);
   const [adicionado, setAdicionado] = useState(false);
+
    if (!produto) {
     return 
     <div className="flex justify-center py-20">
       <div className="w-10 h-10 border-4 border-gray-300 border-t-blue-600 rounded-full animate-spin"></div>
     </div>;
   }
+
   return (
-    <div className="container  md:mt-10">
+    <div className="container md:mt-10">
+      <Link to={'/produtos'}> Voltar</Link>
       <div className="flex flex-wrap md:flex-nowrap md:gap-10 items-center justify-center">
         <img
           src={produto.image}
