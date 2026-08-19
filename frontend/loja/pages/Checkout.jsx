@@ -8,7 +8,13 @@ export const Checkout = ({carrinho, setCarrinho}) => {
   return total + item.preco * item.quantidade;
 }, 0);
 
-const frete = subtotal > 299 ? 0 : 25;
+let frete = 0;
+
+if (tipoEntrega === "expressa") {
+    frete = 29.90;
+} else {
+    frete = subtotal > 299 ? 0 : 25;
+}
 const total = subtotal + frete;
     const entregas = [
   {
@@ -30,13 +36,16 @@ const total = subtotal + frete;
     valor: 0,
   },
 ];
+function handleSubmit(e){
+    e.preventDefault();
+}
 console.log(carrinho)
   return (
     <section className="container">
       <h1 className="mt-15 mb-10 text-4xl text-blue font-black uppercase">
         Finalizar pedido
       </h1>
-      <form className="grid grid-cols-[1fr_500px] gap-10">
+      <form className="grid md:grid-cols-[1fr_500px] gap-10" onSubmit={handleSubmit}>
         <div>
           <div className="flex flex-col border border-gray-300 p-8 rounded-2xl">
             <h2 className="mb-3 uppercase font-black text-3xl">
@@ -119,18 +128,21 @@ console.log(carrinho)
               className={`flex gap-5 **:py-2 **:px-6 **:border **:rounded-2xl `}
             >
               <button
+                type="button"
                 className={`${pagamento == "cartao" ? "bg-azul text-white" : ""}`}
                 onClick={() => setPagamento("cartao")}
               >
                 Cartão
               </button>
               <button
+                type="button"
                 className={`${pagamento == "pix" ? "bg-azul text-white" : ""}`}
                 onClick={() => setPagamento("pix")}
               >
                 Pix
               </button>
               <button
+                type="button"
                 className={`${pagamento == "boleto" ? "bg-azul text-white" : ""}`}
                 onClick={() => setPagamento("boleto")}
               >
@@ -235,7 +247,7 @@ console.log(carrinho)
             </div>
           </div>
          
-            <button className='bg-azul hover:bg-azul-hover cursor-pointer mt-4 py-2 rounded-2xl text-white w-[100%]'>Finalizar</button>
+            <button type='submit' className='bg-azul hover:bg-azul-hover cursor-pointer mt-4 py-2 rounded-2xl text-white w-[100%]'>Finalizar</button>
         </div>
       </form>
     </section>
