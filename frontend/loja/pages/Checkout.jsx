@@ -113,7 +113,7 @@ console.log(carrinho)
               </label>
             ))}
           </div>
-          <div className="border border-gray-300 mt-5 p-8">
+          <div className="border border-gray-300 mt-5 p-8 rounded-2xl">
             <h2 className="mb-3 uppercase font-black text-3xl">Pagamento</h2>
             <div
               className={`flex gap-5 **:py-2 **:px-6 **:border **:rounded-2xl `}
