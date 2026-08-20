@@ -1,9 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router';
+import concluido from '../public/pedido-concluido.png'
 export const Checkout = ({carrinho, setCarrinho}) => {
+    const navigate = useNavigate()
     const [tipoEntrega, setTipoEntrega] = useState("padrao");
     const [pagamento, setPagamento] = useState("cartao");
+    const [ enviado, setEnviado] = useState(false)
     const subtotal = carrinho.reduce((total, item) => {
   return total + item.preco * item.quantidade;
 }, 0);
@@ -38,16 +41,18 @@ const total = subtotal + frete;
 ];
 function handleSubmit(e){
     e.preventDefault();
+    setEnviado(true);
+    setCarrinho([]);
 }
 console.log(carrinho)
   return (
     <section className="container">
-      <h1 className="mt-15 mb-10 text-4xl text-blue font-black uppercase">
+      <h1 className="mt-15 mb-10 text-4xl  text-blue font-black uppercase">
         Finalizar pedido
       </h1>
-      <form className="grid md:grid-cols-[1fr_500px] gap-10" onSubmit={handleSubmit}>
+      <form className="grid md:grid-cols-[1fr_500px] md:gap-10 gap-5" onSubmit={handleSubmit}>
         <div>
-          <div className="flex flex-col border border-gray-300 p-8 rounded-2xl">
+          <div className="flex flex-col border border-gray-300 p-4 md:p-8 rounded-2xl">
             <h2 className="mb-3 uppercase font-black text-3xl">
               <span className="text-azul">01</span> Entrega
             </h2>
@@ -58,10 +63,11 @@ console.log(carrinho)
               type="text"
               id="nome"
               name="nome"
+              required
               placeholder="Nome completo"
               className="border border-gray-300 py-2 rounded-2xl px-4"
             />
-            <div className="grid grid-cols-2 gap-5 my-2">
+            <div className="grid md:grid-cols-2 gap-5 my-2">
               <div className="flex flex-col">
                 <label htmlFor="cep" className="font-bold">
                   CEP{" "}
@@ -70,6 +76,7 @@ console.log(carrinho)
                   type="text"
                   name="cep"
                   id="cep"
+                  required
                   placeholder="00000-000"
                   className="border border-gray-300 py-2 rounded-2xl px-4"
                 />
@@ -80,6 +87,9 @@ console.log(carrinho)
                 </label>
                 <input
                   type="text"
+                  required
+                  id='numero'
+                  name='numero'
                   placeholder="123"
                   className="border border-gray-300 py-2 rounded-2xl px-4"
                 />
@@ -90,10 +100,11 @@ console.log(carrinho)
             </label>
             <input
               type="text"
-              name=""
-              id=""
+              name="endereco"
+              required
+              id="endereco"
               placeholder="Rua, bairro, cidade"
-              className="border border-gray-300 py-2 rounded-2xl px-4 mb-5"
+              className="border border-gray-300 py-2 rounded-2xl px-4 md:mb-5"
             />
 
             {entregas.map((entrega) => (
@@ -122,7 +133,7 @@ console.log(carrinho)
               </label>
             ))}
           </div>
-          <div className="border border-gray-300 mt-5 p-8 rounded-2xl">
+          <div className="border border-gray-300 mt-5 p-4 md:p-8 rounded-2xl">
             <h2 className="mb-3 uppercase font-black text-3xl">Pagamento</h2>
             <div
               className={`flex gap-5 **:py-2 **:px-6 **:border **:rounded-2xl `}
@@ -207,11 +218,11 @@ console.log(carrinho)
           </div>
         </div>
 
-        <div className="col-start-2 self-start border border-gray-300 p-6 rounded-2xl">
+        <div className="md:col-start-2 self-start border border-gray-300 p-4 md:p-6 rounded-2xl">
           <h3 className="mb-3 uppercase font-black text-3xl">
             Resumo do pedido
           </h3>
-          <div className="mt-10 border-b border-gray-300">
+          <div className=" mt-4 md:mt-10 border-b border-gray-300">
             {carrinho.map((item) => (
               <>
                 <div className="">
@@ -249,6 +260,19 @@ console.log(carrinho)
          
             <button type='submit' className='bg-azul hover:bg-azul-hover cursor-pointer mt-4 py-2 rounded-2xl text-white w-[100%]'>Finalizar</button>
         </div>
+        {enviado && (
+  <div className="overlay">
+    <article className="ativo">
+      <h1 className="text-3xl uppercase font-black mb-3">Compra realizada com sucesso!</h1>
+
+      <img src={concluido} className="w-50" alt="" />
+
+      <button onClick={()=> navigate('/')} className='text-azul mt-3 font-bold'>
+        Voltar ao início
+      </button>
+    </article>
+  </div>
+)}
       </form>
     </section>
   );

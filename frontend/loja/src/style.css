@@ -30,4 +30,33 @@
     border: 1px solid black;
     color: black;
   }
+  .ativo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 420px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--color-text-light);
+  border-radius: 30px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.15);
+  text-align: center;
+  z-index: 1000;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 }

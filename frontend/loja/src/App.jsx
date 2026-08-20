@@ -14,7 +14,22 @@ import { Checkout } from "../pages/Checkout";
 
 function App() {
     const [dados, setDados] = useState([]);
-    const [carrinho, setCarrinho] = useState([]);
+    const [carrinho, setCarrinho] = useState(() => {
+  try {
+    const salvo = localStorage.getItem('carrinho');
+    return salvo ? JSON.parse(salvo) : [];
+  } catch {
+    return [];
+  }
+});
+
+useEffect(() => {
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}, [carrinho]);
+
+
+
+
     const [tamanhoSelecionado, setTamanhoSelecionado] = useState({});
 
       useEffect(()=>{

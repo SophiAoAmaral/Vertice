@@ -2,7 +2,7 @@ import React from 'react'
 import capa from '../public/corrida-capa.webp'
 import { Link } from 'react-router'
 import { useState } from 'react'
-import capa2 from '../public/adizero-capa.webp';
+import capa2 from '../assets/adizero-capa.webp';
 import avaliacoes from '../objects/Avaliacoes';
 
 
