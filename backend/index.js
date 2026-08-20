@@ -4,7 +4,6 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
@@ -22,7 +21,6 @@ const produtosSchema = new mongoose.Schema({
 
 const Produto = mongoose.model('Produto', produtosSchema);
 
-
 app.get('/produto', async (req, res) => {
   try {
     res.json(await Produto.find());
@@ -32,16 +30,20 @@ app.get('/produto', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3003;
-
-// sobe primeiro, independente do banco
-app.listen(PORT, '0.0.0.0', () => console.log(`Servidor na ${PORT}`));
-
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Mongo conectado'))
-  .catch(err => console.error('Falha no Mongo:', err.message));
-
-  app.get('/health', (req, res) => {
+app.get('/health', (req, res) => {
   const estados = ['desconectado', 'conectado', 'conectando', 'desconectando'];
   res.json({ mongo: estados[mongoose.connection.readyState] });
 });
+
+const PORT = process.env.PORT || 3003;
+app.listen(PORT, '0.0.0.0', () => console.log(`Servidor na ${PORT}`));
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(async () => {
+    const conn = mongoose.connection;
+    console.log('Banco:', conn.name);
+    const cols = await conn.db.listCollections().toArray();
+    console.log('Coleções:', cols.map(c => c.name));
+    console.log('Docs encontrados:', await Produto.countDocuments());
+  })
+  .catch(err => console.error('Falha no Mongo:', err.message));
