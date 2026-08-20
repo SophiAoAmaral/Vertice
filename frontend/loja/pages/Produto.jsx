@@ -21,7 +21,7 @@ export const Produto = ({dados, adicionarCarrinho}) => {
 
   return (
     <div className="container md:mt-10">
-      <Link to={'/produtos'}> Voltar</Link>
+      <Link to={'/produtos'} className='text-azul'>← Voltar</Link>
       <div className="flex flex-wrap md:flex-nowrap md:gap-10 items-center justify-center">
         <img
           src={produto.image}

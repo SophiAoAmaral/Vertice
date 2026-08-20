@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from 'axios'
 import { Header } from "../components/Header/Header";
-import { Route, Routes } from "react-router";
+import { Route, Routes, useLocation } from "react-router";
 import { Home } from "../pages/Home";
 import { Produtos } from "../pages/Produtos";
 import { Produto } from "../pages/Produto";
@@ -27,6 +27,15 @@ useEffect(() => {
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }, [carrinho]);
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 
 
@@ -76,6 +85,7 @@ function adicionarCarrinho(produto, tamanhoSelecionado) {
 
   return (
     <>
+    <ScrollToTop />
       <Header carrinho={carrinho}/>
 
 

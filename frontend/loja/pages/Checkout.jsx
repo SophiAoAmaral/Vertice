@@ -109,11 +109,11 @@ console.log(carrinho)
 
             {entregas.map((entrega) => (
               <label
-                className={`border-2 mt-5 rounded-3xl p-5 flex justify-between cursor-pointer transition ${tipoEntrega === entrega.id ? "border-azul bg-blue-50 text-azul" : ""}`}
+                className={`border-2 mt-5 rounded-3xl p-3 md:p-5 flex justify-between cursor-pointer transition ${tipoEntrega === entrega.id ? "border-azul bg-blue-50 text-azul" : ""}`}
               >
                 <div>
                   <h3 className="font-bold">{entrega.titulo}</h3>
-                  <p className="font-light">{entrega.prazo}</p>
+                  <p className="font-light text-xs md:text-base ">{entrega.prazo}</p>
                 </div>
                 <div>
                   <span className="font-bold">
@@ -226,7 +226,7 @@ console.log(carrinho)
             {carrinho.map((item) => (
               <>
                 <div className="">
-                  <div className="flex gap-4 items-center my-5">
+                  <div className="flex flex-wrap gap-4 items-center my-5">
                     <img src={item.image} alt="" className="w-15" />
                     <h3 className="">{item.nome}</h3>
                     {item.tamanhoSelecionado > 0 && (
