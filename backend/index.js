@@ -22,6 +22,7 @@ const produtosSchema = new mongoose.Schema({
 
 const Produto = mongoose.model('Produto', produtosSchema);
 
+
 app.get('/produto', async (req, res) => {
   try {
     res.json(await Produto.find());
@@ -33,12 +34,14 @@ app.get('/produto', async (req, res) => {
 
 const PORT = process.env.PORT || 3003;
 
+// sobe primeiro, independente do banco
+app.listen(PORT, '0.0.0.0', () => console.log(`Servidor na ${PORT}`));
+
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('Mongo conectado');
-    app.listen(PORT, () => console.log(`Servidor na ${PORT}`));
-  })
-  .catch(err => {
-    console.error('Falha no Mongo:', err.message);
-    process.exit(1);
-  });
+  .then(() => console.log('Mongo conectado'))
+  .catch(err => console.error('Falha no Mongo:', err.message));
+
+  app.get('/health', (req, res) => {
+  const estados = ['desconectado', 'conectado', 'conectando', 'desconectando'];
+  res.json({ mongo: estados[mongoose.connection.readyState] });
+});
